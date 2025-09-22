@@ -1,6 +1,10 @@
 ########################(beg of [Makefile])########################
+Library=./../..
+###################################################################
 
-test::
+comp::
+
+###################################################################
 
 clean:: ; rm -f *~
 
@@ -9,20 +13,26 @@ cleanall:: ; rm -f *.class
 
 ###################################################################
 
+comp:: ; javac -cp $(Library) MyStack.java
+comp:: ; javac -cp $(Library) MyStackList.java
+comp:: ; javac -cp $(Library) MyStackArray.java
+comp:: ; javac -cp $(Library) MyStackFullExn.java
+comp:: ; javac -cp $(Library) MyStackEmptyExn.java
+
+###################################################################
+
 test:: \
 MyStackListTest
 MyStackListTest: \
-MyStackListTest.class; java MyStackListTest
-MyStackListTest.class: \
-MyStackListTest.java; javac MyStackListTest.java
+MyStackListTest.class; java -cp .::$(Library) MyStackListTest
+MyStackListTest.class: MyStackListTest.java; javac -cp $(Library) MyStackListTest.java
 
 ###################################################################
 
 test:: \
 MyStackArrayTest
 MyStackArrayTest: \
-MyStackArrayTest.class; java MyStackArrayTest
-MyStackArrayTest.class: \
-MyStackArrayTest.java; javac MyStackArrayTest.java
+MyStackArrayTest.class; java -cp .::$(Library) MyStackArrayTest
+MyStackArrayTest.class: MyStackArrayTest.java; javac -cp $(Library) MyStackArrayTest.java
 
 ########################(end of [Makefile])########################

@@ -1,3 +1,5 @@
+package Library.BinSearch;
+
 import java.util.Arrays;
 
 public class SBinSearch

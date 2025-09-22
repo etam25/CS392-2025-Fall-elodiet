@@ -1,13 +1,10 @@
-package Library.MyQueue;
-
 import java.util.function.Consumer;
 import java.util.function.BiConsumer;
 
-public class MyQueueList<T> extends MyQueueBase<T> {
+public class MyStackList<T> extends MyStackBase<T> {
 
     int nitm = -1;
-    Node frst = null;
-    Node last = null;
+    Node itms = null;
 
     private class Node {
         private T item;
@@ -19,8 +16,8 @@ public class MyQueueList<T> extends MyQueueBase<T> {
         }
     }
 
-    public MyQueueList() {
-	nitm = 0; frst = null; last = null;
+    public MyStackList() {
+	nitm = 0; itms = null;
     }
 
     public int size() {
@@ -32,30 +29,22 @@ public class MyQueueList<T> extends MyQueueBase<T> {
     }
 
     public T top$raw() {
-	return frst.item;
+	return itms.item;
     }
 
-    public T deque$raw() {
-	T itm = frst.item;
-	frst = frst.next;
-	if (frst == null) last = null;
+    public T pop$raw() {
+	T itm = itms.item;
+	itms = itms.next;
 	nitm -= 1; return itm;
     }
 
-    public void enque$raw(T itm) {
-	if (last == null) {
-	    last = new Node(itm, null);
-	    frst = last;
-	} else {
-	    last.next = new Node(itm, null);
-	    last = last.next;
-	}
+    public void push$raw(T itm) {
+	itms = new Node(itm, itms);
 	nitm += 1; return;
     }
 
-    public void
-	foritm(Consumer<? super T> action) {
-	Node xs = frst;
+    public void foritm(Consumer<? super T> action) {
+	Node xs = itms;
 	while (xs != null) {
 	    action.accept(xs.item); xs = xs.next;
 	}
@@ -64,7 +53,7 @@ public class MyQueueList<T> extends MyQueueBase<T> {
     public void
 	iforitm(BiConsumer<Integer, ? super T> action) {
 	int i = 0;
-	Node xs = frst;
+	Node xs = itms;
 	while (xs != null) {
 	    action.accept(i, xs.item); i += 1; xs = xs.next;
 	}

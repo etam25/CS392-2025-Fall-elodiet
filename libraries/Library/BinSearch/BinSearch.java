@@ -1,3 +1,5 @@
+package Library.BinSearch;
+
 import java.util.Arrays;
 
 public class BinSearch<T extends Comparable<T>> {

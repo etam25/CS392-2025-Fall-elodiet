@@ -1,3 +1,5 @@
+package Library.FnList;
+
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.function.BiConsumer;
@@ -29,9 +31,11 @@ public class FnList<T> {
     }
 
     public T hd() {
+	// = hd$raw
 	return root.head;
     }
     public FnList<T> tl() {
+	// = tl$raw
 	return root.tail;
     }
 //
@@ -68,7 +72,7 @@ public class FnList<T> {
 	System.out.print(")");
     }
 //
-    void foritm(Consumer<? super T> action) {
+    public void foritm(Consumer<? super T> action) {
 	FnList<T> xs = this;
 	while (true) {
 	    if (xs.nilq()) break;
@@ -76,7 +80,7 @@ public class FnList<T> {
 	    xs = xs.tl();
 	}
     }
-    void rforitm(Consumer<? super T> action) {
+    public void rforitm(Consumer<? super T> action) {
 	FnList<T> xs = this.reverse();
 	while (true) {
 	    if (xs.nilq()) break;
@@ -84,7 +88,7 @@ public class FnList<T> {
 	    xs = xs.tl();
 	}
     }
-    void iforitm(BiConsumer<Integer, ? super T> action) {
+    public void iforitm(BiConsumer<Integer, ? super T> action) {
 	int i0 = 0;
 	FnList<T> xs = this;
 	while (true) {
@@ -93,7 +97,7 @@ public class FnList<T> {
 	    i0 += 1; xs = xs.tl();
 	}
     }
-    void irforitm(BiConsumer<Integer, ? super T> action) {
+    public void irforitm(BiConsumer<Integer, ? super T> action) {
 	int i0 = 0;
 	FnList<T> xs = this.reverse();
 	while (true) {
@@ -103,7 +107,7 @@ public class FnList<T> {
 	}
     }
 //
-    boolean forall(Predicate<? super T> pred) {
+    public boolean forall(Predicate<? super T> pred) {
 	FnList<T> xs = this;
 	while (true) {
 	    if (xs.nilq()) break;
@@ -112,7 +116,7 @@ public class FnList<T> {
 	}
 	return true;
     }
-    boolean rforall(Predicate<? super T> pred) {
+    public boolean rforall(Predicate<? super T> pred) {
 	FnList<T> xs = this.reverse();
 	while (true) {
 	    if (xs.nilq()) break;
@@ -121,7 +125,7 @@ public class FnList<T> {
 	}
 	return true;
     }
-    boolean iforall(BiPredicate<Integer, ? super T> pred) {
+    public boolean iforall(BiPredicate<Integer, ? super T> pred) {
 	int i0 = 0;
 	FnList<T> xs = this;
 	while (true) {
@@ -131,7 +135,7 @@ public class FnList<T> {
 	}
 	return true;
     }
-    boolean irforall(BiPredicate<Integer, ? super T> pred) {
+    public boolean irforall(BiPredicate<Integer, ? super T> pred) {
 	int i0 = 0;
 	FnList<T> xs = this.reverse();
 	while (true) {

@@ -1,3 +1,6 @@
+import Library.FnList.*;
+import Library.FnGtree.*;
+
 public class QueenPuzzleTest {
 //
     static int nsol = 0;

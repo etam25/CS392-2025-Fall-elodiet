@@ -1,5 +1,3 @@
-package Library.MyStack;
-
 public abstract class MyStackBase<T> implements MyStack<T> {
 //
     public

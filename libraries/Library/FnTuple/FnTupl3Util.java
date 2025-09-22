@@ -1,3 +1,5 @@
+package Library.FnTuple;
+
 public class FnTupl3Util {
     public static <T0,T1,T2>
 	void System$out$print(FnTupl3<T0,T1,T2> tup) {

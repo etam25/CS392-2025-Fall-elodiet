@@ -1,8 +1,6 @@
-import Library.MyStack.*;
-
 public class MyStackArrayTest {
     public static void main(String[] args) {
-	MyStackArray<Integer> itms =
+	MyStack<Integer> itms =
 	    new MyStackArray<Integer>(10);
 	itms.push$exn(1);
 	itms.push$exn(2);

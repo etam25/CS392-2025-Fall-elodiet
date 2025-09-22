@@ -1,3 +1,5 @@
+package Library.MyQueue;
+
 import java.util.function.Consumer;
 import java.util.function.BiConsumer;
 
@@ -32,16 +34,22 @@ public class MyQueueArray<T> extends MyQueueBase<T> {
     public T deque$raw() {
 	T itm = itms[frst];
 	nitm -= 1;
-	frst += 1;
-	if (frst >= itms.length) frst = 0;
+	/*
+	  frst += 1;
+	  if (frst >= itms.length) frst = 0;
+	*/
+	frst = (frst + 1) % itms.length;
 	return itm;
     }
 
     public void enque$raw(T itm) {
 	itms[last] = itm;
 	nitm += 1;
-	last += 1;
-	if (last >= itms.length) last = 0;
+	/*
+	  last += 1;
+	  if (last >= itms.length) last = 0;
+	*/
+	last = (last + 1) % itms.length;
 	return /*void*/ ;
     }
 

@@ -1,3 +1,5 @@
+package Library.FnTuple;
+
 public class FnTupl3<T0,T1,T2> {
     T0 sub0;
     T1 sub1;

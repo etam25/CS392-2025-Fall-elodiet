@@ -1,3 +1,5 @@
+import Library.FnList.*;
+    
 public class FnListTest {
 //
     public static Integer tally(int n) {

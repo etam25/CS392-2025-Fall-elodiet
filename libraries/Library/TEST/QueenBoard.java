@@ -1,3 +1,6 @@
+import Library.FnList.*;
+import Library.FnGtree.*;
+
 public class QueenBoard implements FnGtree<FnList<Integer>> {
     static final int N = 8;
     FnList<Integer> bd0;

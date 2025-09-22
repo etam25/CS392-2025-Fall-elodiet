@@ -1,6 +1,8 @@
+import Library.MyQueue.*;
+
 public class MyQueueArrayTest {
     public static void main(String[] args) {
-	MyQueue<Integer> itms = new MyQueueArray(10);
+	MyQueueArray<Integer> itms = new MyQueueArray(10);
 	itms.enque$exn(1);
 	itms.enque$exn(2);
 	itms.enque$exn(3);

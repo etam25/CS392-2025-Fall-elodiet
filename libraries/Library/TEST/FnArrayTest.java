@@ -1,3 +1,5 @@
+import Library.FnArray.*;
+
 public class FnArrayTest {
 //
     public static Integer tally(int n) {
