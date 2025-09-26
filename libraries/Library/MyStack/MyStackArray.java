@@ -47,4 +47,10 @@ public class MyStackArray<T> extends MyStackBase<T> {
 	int m = nitm - 1;
 	for (int i = 0; i < nitm; i += 1) action.accept(i, itms[m-i]);
     }
+
+    @Override
+    public void rforitm(Consumer<? super T> action) {
+	for (int i = 0; i < nitm; i += 1) action.accept(itms[i]);
+    }
+
 }

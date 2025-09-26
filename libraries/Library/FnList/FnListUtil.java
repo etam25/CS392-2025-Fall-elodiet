@@ -128,6 +128,18 @@ public class FnListUtil {
 	return xs.reverse().iforall(pred);
     }
 //
+/*
+    public static<T>
+	FnList<T> reverse(FnList<T> xs) {
+	FnList<T> ys;
+	ys = new FnList();
+	while (true) {
+            if (xs.nilq()) break;
+	    ys = new FnList(xs.hd(), ys); xs = xs.tl();
+	}
+	return ys;
+    }
+*/
     public static<T>
 	FnList<T> reverse(FnList<T> xs) {
 	FnList<T> r0 = new FnList<T>();

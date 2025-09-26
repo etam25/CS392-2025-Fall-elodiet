@@ -27,6 +27,6 @@ of the MyStack data structure.
 
 ## Assignment 3-3 (30 points)
 
-Please give a stack implementation based on two functional lists.
+Please give a queue implementation based on two functional lists.
 If this is not clear to you, please search "two list based queue
 implementation".
