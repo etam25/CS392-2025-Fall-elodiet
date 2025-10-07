@@ -1,6 +1,6 @@
 public class Assign02_01 {
     
-        public void main(String[] argv) {
+    public static void main(String[] argv){
             int powerOf2 = 1;
             int bitCount = 1;
 
