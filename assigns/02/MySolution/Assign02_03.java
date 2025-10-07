@@ -83,7 +83,7 @@ public class Assign02_03 {
         System.out.println();
 
         // test case 8
-        Integer[] test2 = {10, 20, 30};
+        Integer[] test8 = {10, 20, 30};
         System.out.println("Test 8: " + Arrays.toString(test8));
         System.out.println("Expected: true (10 + 20 = 30)");
         System.out.println("Result: " + solve_3sum(test8));

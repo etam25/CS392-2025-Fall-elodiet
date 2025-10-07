@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class Assign02_02 {
     public static <T extends Comparable<T>> int indexOf(T[] a, T key) {
-        return indexOf(A, key, 0, a.length - 1);
+        return indexOf(a, key, 0, a.length - 1);
     }    
     private static <T extends Comparable<T>> int indexOf(T[] a, T key, int lo, int hi) {
         if (lo > hi) {
@@ -52,7 +52,7 @@ public class Assign02_02 {
         System.out.println();
 
         // test with empty array
-        Integerp[] emptyArray = {};
+        Integer[] emptyArray = {};
         System.out.println("Testing with empty array:");
         System.out.println("indexOf(emptyarray, 5): " + indexOf(emptyArray, 5)); // should be -1
 
