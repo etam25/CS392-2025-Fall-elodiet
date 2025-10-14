@@ -11,5 +11,16 @@ public class MyStackArrayTest {
 	itms.push$exn(4);
 	itms.push$exn(5);
 	itms.System$out$print(); System.out.println();
+    	System.out.print("MyStackRev(");
+	itms.irforitm
+	(
+          (i, itm) ->
+	  {
+	      if (i > 0) {
+		  System.out.print(",");
+	      }
+	      System.out.print(itm.toString());
+	  }
+	); System.out.print(")"); System.out.println();
     }
 }

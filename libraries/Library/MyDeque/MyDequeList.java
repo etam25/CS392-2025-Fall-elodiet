@@ -3,6 +3,9 @@ package Library.MyDeque;
 import java.util.function.Consumer;
 import java.util.function.BiConsumer;
 
+
+class NotImplementedExn extends RuntimeException {}
+
 public class MyDequeList<T> extends MyDequeBase<T> {
 
     int nitm = -1;
@@ -22,53 +25,67 @@ public class MyDequeList<T> extends MyDequeBase<T> {
     }
 
     public MyDequeList() {
-	nitm = 0; itms = null;
+	nitm = 0;
+	frnt = null; rear = null;
     }
 
-    public int size() {
-	return nitm;
-    }
+    // @Override
+    public int size() { return nitm; }
+    // @Override
+    public boolean isFull() { return false; }
 
-    public boolean isFull() {
-	return false;
-    }
-
-    public T fpeek$raw() {
-	return frnt.item;
-    }
-    public T rpeek$raw() {
-	return rear.item;
-    }
-
-    public void foritm(Consumer<? super T> action) {
+    // @Override
+    public T fpeek$raw() { return frnt.item; }
+    // @Override
+    public T rpeek$raw() { return rear.item; }
+//
+    public T fdeque$raw()
+    {
+	throw new NotImplementedExn(); }
+    // @Override
+    public T rdeque$raw()
+    {
+	throw new NotImplementedExn(); }
+//
+    // @Override
+    public void fenque$raw(T itm)
+    {
+	throw new NotImplementedExn(); }
+    // @Override
+    public void renque$raw(T itm)
+    {
+	throw new NotImplementedExn(); }
+    // @Override
+//
+    public void foritm(Consumer<? super T> work) {
 	Node xs = frnt;
 	while (xs != null) {
-	    action.accept(xs.item); xs = xs.next;
+	    work.accept(xs.item); xs = xs.next;
 	}
     }
 
-    public void rforitm(Consumer<? super T> action) {
+    public void rforitm(Consumer<? super T> work) {
 	Node xs = rear;
 	while (xs != null) {
-	    action.accept(xs.item); xs = xs.prev;
+	    work.accept(xs.item); xs = xs.prev;
 	}
     }
 
     public void
-	iforitm(BiConsumer<Integer, ? super T> action) {
+	iforitm(BiConsumer<Integer, ? super T> work) {
 	int i = 0;
 	Node xs = frnt;
 	while (xs != null) {
-	    action.accept(i, xs.item); i += 1; xs = xs.next;
+	    work.accept(i, xs.item); i += 1; xs = xs.next;
 	}
     }
 
     public void
-	irforitm(BiConsumer<Integer, ? super T> action) {
+	irforitm(BiConsumer<Integer, ? super T> work) {
 	int i = 0;
 	Node xs = rear;
 	while (xs != null) {
-	    action.accept(i, xs.item); i += 1; xs = xs.prev;
+	    work.accept(i, xs.item); i += 1; xs = xs.prev;
 	}
     }
 }

@@ -1,7 +1,8 @@
 import Library.FnList.*;
 import Library.FnGtree.*;
 
-public class QueenBoard implements FnGtree<FnList<Integer>> {
+public class QueenBoard
+    implements FnGtree<FnList<Integer>> {
     static final int N = 8;
     FnList<Integer> bd0;
     public
@@ -21,17 +22,17 @@ public class QueenBoard implements FnGtree<FnList<Integer>> {
 	boolean ans;
 	FnList<Integer> bd1;
 	FnList<FnGtree<FnList<Integer>>>
-	    res =
+	    res = FnListSUtil.nil();
 	    new FnList<FnGtree<FnList<Integer>>>();
 	if (bd0.length() >= N) return res;
 	for (int c0 = 0; c0 < N; c0 += 1) {
 	    final int fc0 = c0;
 	    ans = bd0.iforall((i1, c1) -> (fc0 != c1) && (i1+1 != abs(fc0 - c1)));
 	    if (ans) {
-		bd1 = new FnList<Integer>(fc0, bd0);
-		res = new FnList<FnGtree<FnList<Integer>>>(new QueenBoard(bd1), res);
+		bd1 = FnListSUtil.cons(fc0, bd0);
+		res = FnListSUtil.cons(new QueenBoard(bd1), res);
 	    }
 	}
 	return res.reverse();
     }
-}
+} // end of [public class QueenBoard{...}]

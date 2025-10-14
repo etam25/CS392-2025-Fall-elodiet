@@ -35,7 +35,7 @@ public class BinarySearch<T extends Comparable<T>> {
 	// sort the array
 	Arrays.sort(Allowlist);
 
-	BinarySearch BS = new BinarySearch<Integer>();
+	BinarySearch<Integer> BS = new BinarySearch<Integer>();
 
 	// read integer key from standard input; print if not in Allowlist
 	while (!StdIn.isEmpty()) {

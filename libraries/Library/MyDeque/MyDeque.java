@@ -33,10 +33,10 @@ interface MyDeque<T> {
 //
     void System$out$print();
 //
-    void foritm(Consumer<? super T> action);
-    void iforitm(BiConsumer<Integer, ? super T> action);
+    void foritm(Consumer<? super T> work);
+    void iforitm(BiConsumer<Integer, ? super T> work);
 //
-    void rforitm(Consumer<? super T> action);
-    void irforitm(BiConsumer<Integer, ? super T> action);
+    void rforitm(Consumer<? super T> work);
+    void irforitm(BiConsumer<Integer, ? super T> work);
 //
 } // end of [interface MyDeque<T>{...}]

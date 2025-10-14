@@ -13,7 +13,9 @@ cleanall:: ; rm -f *.class
 
 ###################################################################
 
-comp:: ; javac -cp $(Library) FnArray.java
-comp:: ; javac -cp $(Library) FnArrayUtil.java
+comp:: ; javac -cp $(Library) MyDeque.java
+comp:: ; javac -cp $(Library) MyDequeList.java
+comp:: ; javac -cp $(Library) MyDequeFullExn.java
+comp:: ; javac -cp $(Library) MyDequeEmptyExn.java
 
 ########################(end of [Makefile])########################

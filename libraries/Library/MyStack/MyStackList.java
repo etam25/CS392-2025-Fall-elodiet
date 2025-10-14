@@ -22,42 +22,49 @@ public class MyStackList<T> extends MyStackBase<T> {
 	nitm = 0; itms = null;
     }
 
+    @Override
     public int size() {
 	return nitm;
     }
 
+    @Override
     public boolean isFull() {
 	return false;
     }
 
+    @Override
     public T top$raw() {
 	return itms.item;
     }
 
+    @Override
     public T pop$raw() {
 	T itm = itms.item;
 	itms = itms.next;
 	nitm -= 1; return itm;
     }
 
+    @Override
     public void push$raw(T itm) {
 	itms = new Node(itm, itms);
 	nitm += 1; return;
     }
 
-    public void foritm(Consumer<? super T> action) {
+    @Override
+    public void foritm(Consumer<? super T> work) {
 	Node xs = itms;
 	while (xs != null) {
-	    action.accept(xs.item); xs = xs.next;
+	    work.accept(xs.item); xs = xs.next;
 	}
     }
 
+    @Override
     public void
-	iforitm(BiConsumer<Integer, ? super T> action) {
+	iforitm(BiConsumer<Integer, ? super T> work) {
 	int i = 0;
 	Node xs = itms;
 	while (xs != null) {
-	    action.accept(i, xs.item); i += 1; xs = xs.next;
+	    work.accept(i, xs.item); i += 1; xs = xs.next;
 	}
     }
 }

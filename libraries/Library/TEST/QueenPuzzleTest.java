@@ -16,14 +16,14 @@ public class QueenPuzzleTest {
     }
     public static void
 	board$print(FnList<Integer> cs) {
-	FnListUtil.rforitm(cs, (col) -> row$print(col));
+	FnListSUtil.rforitm(cs, (col) -> row$print(col));
 	System.out.println();
     }
 //
     public static void main(String[] args) {
 	QueenBoard bd0 =
 	    new QueenBoard(new FnList<Integer>());
-	FnGtreeUtil.DFirstSearch(
+	FnGtreeSUtil.DFirstSearch(
 	     bd0,
 	     (cs) -> {
 		 if (cs.length() == N) {

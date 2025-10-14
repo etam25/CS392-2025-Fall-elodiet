@@ -6,7 +6,9 @@ public class SBinSearch
 {
     private SBinSearch() { }
 
-    public static <T extends Comparable<T> > int indexOf(T[] a, T key) {
+    public static
+	<T extends Comparable<T>>
+	int indexOf(T[] a, T key) {
         int lo = 0;
         int hi = a.length - 1;
         while (lo <= hi) {

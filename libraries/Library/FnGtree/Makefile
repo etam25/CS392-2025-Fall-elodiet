@@ -14,6 +14,6 @@ cleanall:: ; rm -f *.class
 ###################################################################
 
 comp:: ; javac -cp $(Library) FnGtree.java
-comp:: ; javac -cp $(Library) FnGtreeUtil.java
+comp:: ; javac -cp $(Library) FnGtreeSUtil.java
 
 ########################(end of [Makefile])########################
