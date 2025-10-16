@@ -1,1 +1,1 @@
-package MyStack;
+package MyLibrary.MyStack;

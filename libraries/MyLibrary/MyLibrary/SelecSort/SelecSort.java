@@ -1,4 +1,4 @@
-package SelecSort;
+package MyLibrary.SelecSort;
 public class SelecSort {
     private SelecSort() { }
 

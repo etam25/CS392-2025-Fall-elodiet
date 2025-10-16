@@ -1,4 +1,4 @@
-package Quicksort;
+package MyLibrary.Quicksort;
 import java.util.Comparator;
 
 public class Quicksort {
