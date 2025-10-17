@@ -1,6 +1,6 @@
-package FnGseq;
+package MyLibrary.FnGseq;
 
-import Functions.*;
+import MyLibrary.Functions.*;
 import MyLibrary.MyRefer.*;
 
 import java.util.function.Function;
@@ -11,8 +11,8 @@ import java.util.function.BiConsumer;
 import java.util.function.BiPredicate;
 import java.util.function.ToIntBiFunction;
 
-import FnList.FnList;
-import FnList.FnListSUtil;
+import MyLibrary.FnList.FnList;
+import MyLibrary.FnList.FnListSUtil;
 
 public class FnGseq<XS, X0 extends Comparable<X0>> {
     static private class FnGseqExn extends RuntimeException {}

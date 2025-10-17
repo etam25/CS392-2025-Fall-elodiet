@@ -1,6 +1,6 @@
-package LnList;
+package MyLibrary.LnList;
 
-import LnGseq.*;
+import MyLibrary.LnGseq.*;
 
 import java.util.function.Consumer;
 

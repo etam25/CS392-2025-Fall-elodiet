@@ -25,7 +25,7 @@ public class MyQueueArray<T> extends MyQueueBase<T> {
         return (nitm >= itms.length);
     }
 
-    @Override public T topRaw() {
+    @Override public T topraw() {
         return itms[first];
     }
 

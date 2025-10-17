@@ -1,8 +1,8 @@
-package LnList;
+package MyLibrary.LnList;
 
-import FnList.*;
-import Functions.*;
-import MyRefer.*; 
+import MyLibrary.FnList.*;
+import MyLibrary.Functions.*;
+import MyLibrary.MyRefer.*; 
 
 import java.util.Random;
 import java.util.function.Function;

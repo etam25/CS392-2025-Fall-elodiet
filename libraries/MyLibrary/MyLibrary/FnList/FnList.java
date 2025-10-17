@@ -1,6 +1,6 @@
-package FnList;
+package MyLibrary.FnList;
 
-import Functions.*;
+import MyLibrary.Functions.*;
 
 import java.util.function.Consumer;
 import java.util.function.Predicate;
@@ -8,7 +8,7 @@ import java.util.function.BiConsumer;
 import java.util.function.BiPredicate;
 import java.util.function.ToIntBiFunction;
 
-import FnGseq.*;
+import MyLibrary.FnGseq.*;
 
 public class FnList<T> {
     private Node root;

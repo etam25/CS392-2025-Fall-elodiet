@@ -1,12 +1,12 @@
-package Functions;
+package MyLibrary.Functions;
 
-import FnList.*;
+import MyLibrary.FnList.*;
 
 import java.util.function.Consumer;
 
-import FnGseq.*;
+import MyLibrary.FnGseq.*;
 
-public class FcnsUtil<X0> {
+public class FcnsUtil<X0>
     extends FnGseq<Fcns<X0>, X0> {
         @Override 
         public int length(Fcns<X0> xs) {
@@ -28,4 +28,3 @@ public class FcnsUtil<X0> {
             return;
         }
     }
-}

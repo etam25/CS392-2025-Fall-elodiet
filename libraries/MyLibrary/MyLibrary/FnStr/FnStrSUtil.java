@@ -1,8 +1,8 @@
-package FnStr;
+package MyLibrary.FnStr;
 
-import FnGseq.*;
-import FnList.*;
-import Functions.*;
+import MyLibrary.FnGseq.*;
+import MyLibrary.FnList.*;
+import MyLibrary.Functions.*;
 
 import java.util.function.Consumer;
 import java.util.function.BiConsumer;

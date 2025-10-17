@@ -1,4 +1,4 @@
-package FnTuple;
+package MyLibrary.FnTuple;
 
 public class FnTup3Util {
     public static <T0, T1, T2> void

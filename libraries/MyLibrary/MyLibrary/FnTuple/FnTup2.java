@@ -1,4 +1,4 @@
-package FnTuple;
+package MyLibrary.FnTuple;
 
 public class FnTup2 <T0, T1> {
     T0 sub0;

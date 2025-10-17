@@ -1,7 +1,7 @@
-package FnInt;
+package MyLibrary.FnInt;
 
-import FnList.*;
-import Functions.*;
+import MyLibrary.FnList.*;
+import MyLibrary.Functions.*;
 
 import java.util.function.Consumer; 
 import java.util.function.Predicate;

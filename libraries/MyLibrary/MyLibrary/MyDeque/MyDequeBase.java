@@ -1,7 +1,7 @@
-package MyDeque;
+package MyLibrary.MyDeque;
 
-import FnList.*;
-import MyRefer.*;
+import MyLibrary.FnList.*;
+import MyLibrary.MyRefer.*;
 
 import java.util.function.Consumer;
 import java.util.function.BiConsumer;

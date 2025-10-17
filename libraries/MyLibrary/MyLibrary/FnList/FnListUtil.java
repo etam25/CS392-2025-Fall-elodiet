@@ -1,8 +1,8 @@
-package FnList;
+package MyLibrary.FnList;
 
 import java.util.function.Consumer;
 
-import FnGseq.*;
+import MyLibrary.FnGseq.*;
 
 public class FnListUtil<X0 extends Comparable<X0>>
     extends FnGseq<FnList<X0>,X0> {
