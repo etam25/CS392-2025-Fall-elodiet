@@ -1,0 +1,20 @@
+########################(beg of [Makefile])########################
+Library=./../..
+###################################################################
+
+comp::
+
+###################################################################
+
+clean:: ; rm -f *~
+
+cleanall:: clean
+cleanall:: ; rm -f *.class
+
+###################################################################
+
+comp:: ; javac -cp $(Library) LnList.java
+comp:: ; javac -cp $(Library) LnListUtil.java
+comp:: ; javac -cp $(Library) LnListSUtil.java
+
+########################(end of [Makefile])########################

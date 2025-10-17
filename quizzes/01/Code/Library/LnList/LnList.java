@@ -72,24 +72,20 @@ public class LnList<T> {
     public boolean consq1() {
 	return (root != null);
     }
-//
+
     public T hd1() {
 	return root.head;
     }
     public LnList<T> tl1() {
-	return root.tail;
+	return new LnList(root.tail);
     }
-    public LnList<T> tl0() {
-	LnList<T>
-	tail = root.tail;
-	root = null; return tail;
+    public void link(LnList<T> tail) {
+	assert(root.tail==null);
+	root.tail = tail.root; return /*void*/;
     }
-//
-    public void swap$raw1() {
-	LnList<T>
-        tmp1 = root.tail;
-	root.tail = tmp1.tail;
-	tmp1.tail = root; return;
+    public LnList<T> unlink() {
+	Node tail = root.tail;
+	root.tail = null; return new LnList(tail);
     }
 //
     public int length1() {

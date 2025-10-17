@@ -1,0 +1,6 @@
+Library support for CS392-2025-Fall/quiz01
+
+FnList: for functional lists
+LnList: for linear mutable lists
+FnA1sz: for functional (that is, immutable) arrays
+FnStrn: for functional (that is, immutable) strings
