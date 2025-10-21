@@ -1,13 +1,10 @@
 package Library.MyQueue;
 
-<<<<<<< HEAD
-=======
 import Library.FnList.*;
 import Library.MyRefer.*;
 import java.util.function.Consumer;
 import java.util.function.BiConsumer;
 
->>>>>>> upstream/main
 public abstract class MyQueueBase<T> implements MyQueue<T> {
 //
     public

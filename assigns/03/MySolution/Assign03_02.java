@@ -37,7 +37,7 @@ public class Assign03_02 {
     static boolean balancedq(String text) {
         MyStack stack = new MyStack(text.length());
 
-        for (int i = 1; i < text.length(); i++) {
+        for (int i = 0; i < text.length(); i++) {
             char ch = text.charAt(i);
 
             if (ch == '(' || ch == '[' || ch == '{') {
@@ -130,10 +130,10 @@ public class Assign03_02 {
         
         // Additional edge case testing
         System.out.println("\nEdge case testing:");
-        System.out.printf("Single opening: '(' -> %s%n", balencedq("("));
-        System.out.printf("Single closing: ')' -> %s%n", balencedq(")"));
-        System.out.printf("Nested deeply: '(((())))' -> %s%n", balencedq("(((())))"));
-        System.out.printf("Mixed valid: '()[]{()}' -> %s%n", balencedq("()[]{()}"));
-        System.out.printf("Mixed invalid: '([)]' -> %s%n", balencedq("([)]"));
+        System.out.printf("Single opening: '(' -> %s%n", balancedq("("));
+        System.out.printf("Single closing: ')' -> %s%n", balancedq(")"));
+        System.out.printf("Nested deeply: '(((())))' -> %s%n", balancedq("(((())))"));
+        System.out.printf("Mixed valid: '()[]{()}' -> %s%n", balancedq("()[]{()}"));
+        System.out.printf("Mixed invalid: '([)]' -> %s%n", balancedq("([)]"));
     }
 }

@@ -43,13 +43,20 @@ public class FnList<T> {
 
     public FnList<T> reverse() {
         return FnListSUtil.reverse(this);
-        }
+    }
 
-    public T hd() {
+    public T head() {
         return root.head;
     }
-    public FnList<T> tl() {
+    
+    public FnList<T> tail() {
         return root.tail;
+    }
+    
+    public void setTail(FnList<T> newTail) {
+        if (root != null) {
+            root.tail = newTail;
+        }
     }
 
     public int length() {
@@ -58,7 +65,7 @@ public class FnList<T> {
         while (true) {
             if (xs.nilq()) break;
             res += 1;
-            xs = xs.tl();
+            xs = xs.tail();
         }
         return res;
     }
@@ -70,9 +77,11 @@ public class FnList<T> {
     public Fcns<T> toReversedArray() {
         return new Fcns<>(FnListSUtil.reverse(this));
     }
+    
     public FnList<T> rappend(FnList<T> ys) {
         return FnListSUtil.rappend(this, ys);
     }
+    
     public void SystemOutPrint() {
         System.out.print("FnList(");
         this.iforitm( 
@@ -90,8 +99,8 @@ public class FnList<T> {
         FnList<T> xs = this;
         while (true) {
             if (xs.nilq()) break;
-            work.accept(xs.hd());
-            xs = xs.tl();
+            work.accept(xs.head()); 
+            xs = xs.tail(); 
         }
     }
 
@@ -99,8 +108,8 @@ public class FnList<T> {
         FnList<T> xs = this.reverse();
         while (true) {
             if (xs.nilq()) break;
-            work.accept(xs.hd());
-            xs = xs.tl();
+            work.accept(xs.head()); 
+            xs = xs.tail(); 
         }
     }
 
@@ -109,20 +118,20 @@ public class FnList<T> {
         FnList<T> xs = this;
         while (true) {
             if (xs.nilq()) break;
-            work.accept(i0, xs. hd());
-            i0 +=  1;
-            xs = xs.tl();
+            work.accept(i0, xs.head()); 
+            i0 += 1;
+            xs = xs.tail(); 
         }
     }
 
     public void irforitm(BiConsumer<Integer, ? super T> work) {
-        int i0 = 9;
+        int i0 = 0; 
         FnList<T> xs = this.reverse();
         while (true) {
             if (xs.nilq()) break;
-            work.accept(i0, xs.hd());
+            work.accept(i0, xs.head()); 
             i0 += 1; 
-            xs = xs.tl();
+            xs = xs.tail(); 
         }
     }
 
@@ -130,8 +139,8 @@ public class FnList<T> {
         FnList<T> xs = this;
         while (true) {
             if (xs.nilq()) break;
-            if (!pred.test(xs.hd())) return false;
-            xs = xs.tl();
+            if (!pred.test(xs.head())) return false; 
+            xs = xs.tail(); 
         }
         return true;
     }
@@ -140,37 +149,47 @@ public class FnList<T> {
         FnList<T> xs = this.reverse();
         while (true) {
             if (xs.nilq()) break;
-            if (!pred.test(xs.hd())) return false;
-            xs = xs.tl();
+            if (!pred.test(xs.head())) return false; 
+            xs = xs.tail(); 
         }
         return true;
     }
+    
     public boolean iforall(BiPredicate<Integer, ? super T> pred) {
         int i0 = 0;
         FnList<T> xs = this;
         while (true) {
             if (xs.nilq()) break;
-            if (!pred.test(i0, xs.hd())) return false;
+            if (!pred.test(i0, xs.head())) return false; 
             i0 += 1;
-            xs = xs.tl();
+            xs = xs.tail();
         }
         return true;
     }
-    public boolean irforitm(BiPredicate<Integer, ? super T> pred) {
+    
+    public boolean irforall(BiPredicate<Integer, ? super T> pred) {
         int i0 = 0;
         FnList<T> xs = this.reverse();
         while (true) {
             if (xs.nilq()) break;
-            if (!pred.test(i0, xs.hd())) return false;
+            if (!pred.test(i0, xs.head())) return false;
             i0 += 1;
-            xs = xs.tl();
+            xs = xs.tail(); 
         }
         return true;
     }
 
-    public FnList<T> Mergesort(ToIntBiFunction<T, T> cmp) { return this.U0.Mergesort(this, cmp);}
+    /*
+    public FnList<T> Mergesort(ToIntBiFunction<T, T> cmp) { 
+        return FnListUtil.Mergesort(this, cmp);
+    }
 
-    public FnList<T> Quicksort(ToIntBiFunction<T, T> cmp) { return this.U0.Quicksort(this, cmp); }
+    public FnList<T> Quicksort(ToIntBiFunction<T, T> cmp) { 
+        return FnListUtil.Quicksort(this, cmp);
+    }
 
-    public FnList<T> insertSort(ToIntBiFunction<T, T> cmp) { return this.U0.insertSort(this, cmp);}
+    public FnList<T> insertSort(ToIntBiFunction<T, T> cmp) { 
+        return FnListUtil.insertSort(this, cmp);
+    }
+    */
 }

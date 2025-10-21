@@ -1,8 +1,9 @@
-import MyQueue.*;
+package MyLibrary.MyQueue;
+import MyLibrary.MyQueue.*;
 
 public class MyQueueListTest {
     public static void main(String[] args) {
-        MyQueueList<Integer> itms = new MyQueueList();
+        MyQueueList <Integer> itms = new MyQueueList();
         itms.enqueexn(1);
         itms.enqueexn(2);
         itms.enqueexn(3);

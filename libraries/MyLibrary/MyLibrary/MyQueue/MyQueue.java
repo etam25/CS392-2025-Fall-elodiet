@@ -13,6 +13,10 @@ interface MyQueue<T> {
     T topopt();
     T topexn() throws MyQueueEmptyExn;
 
+    T dequeraw(); 
+    T dequeopt(); 
+    T dequeexn() throws MyQueueEmptyExn; 
+
     void enqueraw(T itm);
     void enqueexn(T itm) throws MyQueueFullExn;
     boolean enqueopt(T itm);
