@@ -17,6 +17,6 @@ public class Quiz01_03 {
 	// HX: No recursion is allowed for this one
 	// HX: No loops (either while-loop or for-loop) is allowed.
 	// HX: Yes, you can use functions (but not recursive functions)
-	// HX: Please do not try to write a HUGH if-then-else mumble jumble!
+	// HX: Please do not try to write a HUGE if-then-else mumble jumble!
     }
 }

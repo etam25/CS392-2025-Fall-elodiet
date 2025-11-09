@@ -6,12 +6,8 @@ import java.util.function.Consumer;
 
 import MyLibrary.FnGseq.*;
 
-public class FcnsUtil<X0>
+public class FcnsUtil<X0 extends Comparable<X0>>
     extends FnGseq<Fcns<X0>, X0> {
-        @Override 
-        public int length(Fcns<X0> xs) {
-            return xs.length();
-        }
 
         @Override 
         public int length(Fcns<X0> xs) {

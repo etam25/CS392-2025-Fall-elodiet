@@ -8,10 +8,13 @@ cleanall:: ; rm -f */*.class
 ###################################################################
 
 compall:: FnGseq
+compall:: LnGseq
 compall:: FnInt1
 compall:: FnStrn
 compall:: FnList
+compall:: LnList
 compall:: FnA1sz
+compall:: LnStrm
 compall:: FnTuple
 <<<<<<< HEAD
 =======
@@ -35,10 +38,16 @@ FnTuple:: ; make -C FnTuple comp
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 FnGseq:: ; make -C LnGseq comp
 FnList:: ; make -C LnList comp
+=======
+LnGseq:: ; make -C LnGseq comp
+LnList:: ; make -C LnList comp
+LnStrm:: ; make -C LnStrm comp
+>>>>>>> upstream/main
 
 ###################################################################
 
@@ -74,6 +83,7 @@ $(ROOT)/Library/FnArray/*.class $(ROOT)/Library/FnTuple/*.class \
 =======
 $(ROOT)/Library/LnList/*.class \
 $(ROOT)/Library/FnA1sz/*.class \
+$(ROOT)/Library/LnStrm/*.class \
 $(ROOT)/Library/FnTuple/*.class \
 >>>>>>> upstream/main
 $(ROOT)/Library/MyRefer/*.class \

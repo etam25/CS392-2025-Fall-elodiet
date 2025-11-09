@@ -18,11 +18,9 @@ public class Quiz01_02 {
 	// which is of the type Consumer<Character>,
 	// ffcs.accept(fcs) and cs.foritm(fcs) should behave
 	// the same.
-	return new FnList<Character>();
     }
     public static void main (String[] args) {
 	// HX-2025-10-12:
 	// Please write minimal testing code for thirdOrderFun.
-	return /*void*/;
     }
 }

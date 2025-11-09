@@ -1,6 +1,7 @@
 package Library.FnList;
 
 import Library.FnA1sz.*;
+import Library.LnStrm.*;
 
 import java.util.function.Consumer;
 import java.util.function.Predicate;
@@ -61,6 +62,10 @@ public class FnList<T> {
     public
     FnA1sz<T> toArray() {
 	return new FnA1sz(this);
+    }
+    public
+    LnStrm<T> toLnStrm() {
+	return SU.strmize(this);
     }
 //
     public FnList<T> reverse() {

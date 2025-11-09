@@ -10,7 +10,7 @@ import java.util.function.BiPredicate;
 import java.util.function.ToIntFunction;
 import java.util.function.ToIntBiFunction;
 
-public class Fcns<T> {
+public class Fcns<T extends Comparable<T>> {
     T[] root;
 
     public final FcnsSUtil SU = new FcnsSUtil();
@@ -22,9 +22,9 @@ public class Fcns<T> {
         int n = xs.length();
         root = (T[])(new Object[n]);
         while (!xs.nilq()) {
-            root[i] = xs.hd(); 
+            root[i] = xs.head(); 
             i++;
-            xs = xs.tl();
+            xs = xs.tail();
         }
     }
 

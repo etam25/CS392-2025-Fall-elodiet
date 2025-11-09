@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Assign07_02",
+            "request": "launch",
+            "mainClass": "Assign07_02",
+            "projectName": "CS392-2025-Fall-elodiet_24938de3"
+        },
+        {
+            "type": "java",
             "name": "Assign06_02",
             "request": "launch",
             "mainClass": "Assign06_02",

@@ -12,8 +12,8 @@ import MyLibrary.FnList.*;
 
 import java.util.function.ToIntBiFunction;
 
-public class FcnsSUtil {
-    public static<T> Fcns<T> listMake(FnList<T> xs) {
+public class FcnsSUtil<T> {
+    public static<T extends Comparable<T>> Fcns<T> listMake(FnList<T> xs) {
         return new Fcns<T>(xs);
     }
 
@@ -35,7 +35,7 @@ public class FcnsSUtil {
         System.out.print(")");
     }
 
-    public static<T, R> Fcns<R> mapArray (Fcns<T> xs, Function<? super T, R> fopr) {
+    public static<T, R extends Comparable<R>> Fcns<R> mapArray(Fcns<T> xs, Function<? super T, ? extends R> fopr) {
         int n = xs.length();
         R[] res = (R[])(new Object[n]);
         for (int i = 0; i < n; i += 1) {
@@ -43,7 +43,7 @@ public class FcnsSUtil {
         }
         return new Fcns<R>(res);
     }
-    public static<T, R> Fcns<R> rmapArray (Fcns<T> xs, Function<? super T, R> fopr) {
+    public static<T, R extends Comparable<T>> Fcns<R> rmapArray (Fcns<T> xs, Function<? super T, R> fopr) {
         int n = xs.length();
         R[] res = (R[])(new Object[n]);
         for (int i = 0; i < n; i += 1) {

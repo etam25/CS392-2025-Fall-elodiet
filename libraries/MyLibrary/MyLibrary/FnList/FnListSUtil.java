@@ -69,8 +69,8 @@ public class FnListSUtil {
     public static<T, R> FnList<R> mapList (FnList<T> xs, Function<? super T, R> fopr) {
         FnList<R> rs = nil();
         while (!nilq(xs)) {
-            rs = cons(fopr.apply(xs.hd()), rs);
-            xs = xs.tl();
+            rs = cons(fopr.apply(xs.head()), rs);
+            xs = xs.tail();
         }
         return reverse(rs);
     }
@@ -79,9 +79,9 @@ public class FnListSUtil {
         int i0 = 0;
         FnList<R> rs = nil();
         while (!nilq(xs)) {
-            rs = cons(fopr.apply(i0, xs.hd()), rs);
+            rs = cons(fopr.apply(i0, xs.head()), rs);
             i0 += 1;
-            xs = xs.tl();
+            xs = xs.tail();
         }
         return reverse(rs);
     }
@@ -139,8 +139,8 @@ public class FnListSUtil {
     public static<T,R> R folditm (FnList<T> xs, R r0, BiFunction<R, ? super T, R> fopr) {
 	    R rs = r0;
 	    while (!nilq(xs)) {
-	       rs = fopr.apply(rs, xs.hd());
-	      xs = xs.tl();
+	       rs = fopr.apply(rs, xs.head());
+	      xs = xs.tail();
 	    }
 	    return rs;
     }
@@ -155,14 +155,14 @@ public class FnListSUtil {
     public static <T extends Comparable<T>> boolean orderedq(FnList<T> xs, ToIntBiFunction<T,T> cmp) {
 	    T x0, x1;
 	    if (nilq(xs)) return true;
-	    x0 = xs.hd();
-	    xs = xs.tl();
+	    x0 = xs.head();
+	    xs = xs.tail();
     	while (!nilq(xs)) {
-            x1 = xs.hd();
+            x1 = xs.head();
             if (cmp.applyAsInt(x0, x1) > 0) {
             return false;
             } else {
-            x0 = x1; xs = xs.tl();
+            x0 = x1; xs = xs.tail();
             }
         }
 	    return true; 
@@ -188,19 +188,19 @@ public class FnListSUtil {
             return xs;
         } else {
                 return
-            insertSort_insert(insertSort(xs.tl(), cmp), xs.hd(), cmp);
+            insertSort_insert(insertSort(xs.tail(), cmp), xs.head(), cmp);
         }
     }
     private static<T> FnList<T> insertSort_insert(FnList<T> xs, T x0, ToIntBiFunction<T,T> cmp) {
         if (nilq(xs)) {
             return cons(x0, xs);
         } else {
-            final T hd = xs.hd();
+            final T hd = xs.head();
             final int sgn = cmp.applyAsInt(x0, hd);
             if (sgn <= 0) { // HX: for stableness
                 return cons(x0, xs); // [x0] is returned
             } else {
-                return cons(hd, insertSort_insert(xs.tl(), x0, cmp));
+                return cons(hd, insertSort_insert(xs.tail(), x0, cmp));
             }
         }
     }
@@ -225,7 +225,7 @@ public class FnListSUtil {
 
     private static<T> FnList<T> MergesortSplit (FnList<T> xs, FnList<T> ys, int n0, int n1, ToIntBiFunction<T, T> cmp) {
         if (2*n1 < n0) {
-            return MergesortSplit(xs.tl(), cons(xs.hd(), ys), n0, n1+1, cmp);
+            return MergesortSplit(xs.tail(), cons(xs.head(), ys), n0, n1+1, cmp);
 
         } else {
             return MergesortMerge(Mergesort(reverse(ys), cmp), 
@@ -240,10 +240,10 @@ public class FnListSUtil {
     private static<T> FnList<T> MergesortMergeHelper (FnList<T> xs, FnList<T> ys, FnList<T> zs, ToIntBiFunction<T, T> cmp) {
         if (nilq(xs)) return rappend(zs, ys);
         if (nilq(xs)) return rappend(zs, xs);
-        if (cmp.applyAsInt(xs.hd(), ys.hd()) <= 0) {
-            return MergesortMergeHelper(xs.tl(), ys, cons(xs.hd(), zs), cmp);
+        if (cmp.applyAsInt(xs.head(), ys.head()) <= 0) {
+            return MergesortMergeHelper(xs.tail(), ys, cons(xs.head(), zs), cmp);
         } else {
-            return MergesortMergeHelper(xs, ys.tl(), cons(ys.hd(), zs), cmp);
+            return MergesortMergeHelper(xs, ys.tail(), cons(ys.head(), zs), cmp);
         }
     }
 
@@ -264,25 +264,25 @@ public class FnListSUtil {
 
         FnList<T> ys = nil();
         for (int i = 0; i < p0; i += 1) {
-            ys = cons(xs.hd(), ys);
-            xs = xs.tl();
+            ys = cons(xs.head(), ys);
+            xs = xs.tail();
         }
 
         T x0, y0;
-        final T pt = xs.hd();
-        xs = xs.tl();
+        final T pt = xs.head();
+        xs = xs.tail();
         FnList<T> us = nil();
         FnList<T> vs = nil();
 
         while (!nilq(xs)) {
-            x0 = xs.hd();
-            xs = xs.tl();
+            x0 = xs.head();
+            xs = xs.tail();
             if (cmp.applyAsInt(x0, pt) <= 0) us = cons(x0, us);
             else vs = cons(x0, vs);
         }
         while (!nilq(ys)) {
-            y0 = ys.hd();
-            ys = ys.tl();
+            y0 = ys.head();
+            ys = ys.tail();
             if (cmp.applyAsInt(y0, pt) <= 0) us = cons(y0, us);
             else vs = cons(y0, vs);
         }

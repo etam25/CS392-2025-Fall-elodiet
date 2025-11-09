@@ -8,8 +8,7 @@ abstract public class Quiz01_06 {
 	// HX-2025-10-15:
 	// This one is abstract, that is, not implemented
     }
-    public static
-	<T extends Comparable<T>>
+    public static<T>
 	FnList<T> someStableSort
 	(FnList<T> xs, ToIntBiFunction<T,T> cmp) {
 	// HX-2025-10-15:
