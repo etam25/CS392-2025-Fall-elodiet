@@ -22,6 +22,7 @@ compall:: MyRefer
 >>>>>>> upstream/main
 compall:: MyStack
 compall:: MyQueue
+compall:: FnTree
 compall:: FnGtree
 compall:: BinSearch
 
@@ -59,6 +60,7 @@ MyQueue:: ; make -C MyQueue comp
 
 ###################################################################
 
+FnTree:: ; make -C FnTree comp
 FnGtree:: ; make -C FnGtree comp
 
 ###################################################################
@@ -87,8 +89,14 @@ $(ROOT)/Library/LnStrm/*.class \
 $(ROOT)/Library/FnTuple/*.class \
 >>>>>>> upstream/main
 $(ROOT)/Library/MyRefer/*.class \
+<<<<<<< HEAD
 >>>>>>> upstream/main
 $(ROOT)/Library/MyStack/*.class $(ROOT)/Library/MyQueue/*.class \
+=======
+$(ROOT)/Library/MyStack/*.class \
+$(ROOT)/Library/MyQueue/*.class \
+$(ROOT)/Library/FnTree/*.class \
+>>>>>>> upstream/main
 $(ROOT)/Library/FnGtree/*.class $(ROOT)/Library/BinSearch/*.class
 
 ###################################################################

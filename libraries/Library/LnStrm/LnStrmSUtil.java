@@ -20,11 +20,31 @@ public class LnStrmSUtil {
     }
 //
     public static<T>
+	LnStrm<T> cons0(T x0, LnStrm<T> fxs) {
+	return new LnStrm<T>(() -> new LnStcn<T>(x0, fxs));
+    }
+//
+    public static<T>
+	LnStrm<T> append0
+	(LnStrm<T> fxs, LnStrm<T> fys) {
+	return new LnStrm<T>(
+	  () -> {
+	      final LnStcn<T> cxs = fxs.eval0();
+	      if (cxs.nilq()) {
+		  return fys.eval0();
+	      } else {
+		  return new LnStcn<T>(cxs.hd(), append0(cxs.tl(), fys));
+	      }
+	  }
+       );
+    }
+//
+    public static<T>
 	void foritm0
 	(LnStrm<T> fxs, Consumer<? super T> work) {
 	LnStcn<T> cxs = fxs.eval0();
 	while (cxs.consq()) {
-	    work.accept(cxs.head); cxs = cxs.tail.eval0();
+	    work.accept(cxs.hd()); cxs = cxs.tl().eval0();
 	}
 	return /*void*/;
     }
@@ -34,10 +54,10 @@ public class LnStrmSUtil {
 	(LnStrm<T> fxs, Predicate<? super T> pred) {
 	LnStcn<T> cxs = fxs.eval0();
 	while (cxs.consq()) {
-	    if (!pred.test(cxs.head))
+	    if (!pred.test(cxs.hd()))
 		return false;
 	    else {
-		cxs = cxs.tail.eval0(); continue;
+		cxs = cxs.tl().eval0(); continue;
 	    }
 	}
 	return true; // all satisfy
@@ -52,8 +72,8 @@ public class LnStrmSUtil {
 	      if (cxs.nilq()) {
 		  return new LnStcn<R>();
 	      } else {
-		  final T hd = cxs.head;
-		  final LnStrm<T> tl = cxs.tail;
+		  final T hd = cxs.hd();
+		  final LnStrm<T> tl = cxs.tl();
 		  return new LnStcn<R>(fopr.apply(hd), map0(tl, fopr));
 	      }
 	  }
@@ -67,12 +87,12 @@ public class LnStrmSUtil {
 	  () -> {
 	      LnStcn<T> cxs = fxs.eval0();
 	      while (cxs.consq()) {
-		  final T hd = cxs.head;
-		  final LnStrm<T> tl = cxs.tail;
+		  final T hd = cxs.hd();
+		  final LnStrm<T> tl = cxs.tl();
 		  if (pred.test(hd)) {
 		      return new LnStcn<T>(hd, filter0(tl, pred));
 		  } else {
-		      cxs = cxs.tail.eval0();
+		      cxs = cxs.tl().eval0();
 		  }
 	      }
 	      return new LnStcn<T>(); // no satisfying elements found

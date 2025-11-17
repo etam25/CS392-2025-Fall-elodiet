@@ -21,6 +21,10 @@ public class FnListSUtil {
 	return new FnList<T>();
     }
     public static<T>
+	FnList<T> sing(T x0) {
+	return cons(x0, nil());
+    }
+    public static<T>
 	FnList<T>
 	cons(T x0, FnList<T> xs) {
 	return new FnList<T>(x0, xs);
