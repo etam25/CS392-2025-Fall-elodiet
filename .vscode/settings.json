@@ -1,9 +1,10 @@
 {
     "java.project.sourcePaths": [
-        "libraries/MyLibrary",
-        "assigns/03/MySolution",
         "quizzes/01/MySolution",
-        "libraries/Library"
+        "libraries/MyLibrary",
+        "libraries/Library",
+        "assigns/03/MySolution",
+        "quizzes/02/MySolution"
     ],
     "java.project.referencedLibraries": ["lib/Library.jar"],
     "java.debug.settings.onBuildFailureProceed": true

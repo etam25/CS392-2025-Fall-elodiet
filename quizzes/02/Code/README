@@ -1,6 +1,6 @@
 ############################################################
 
-Quiz02_01:
+Quiz02_01: 50 points
 (FnA1szLongestMonoSubsequence)
 Please state the status of this question:
 1. Incomplete
@@ -10,7 +10,7 @@ If solved, please BRIEFLY explain your strategy.
   
 ############################################################
 
-Quiz02_02:
+Quiz02_02: 50 points
 (sort1000WithNoRecursion)
 Please state the status of this question:
 1. Incomplete
@@ -20,7 +20,7 @@ If solved, please BRIEFLY explain your strategy.
 
 ############################################################
 
-Quiz02_03:
+Quiz02_03: 50 points
 (Soduku_dfs_solve and Soduku_bfs_solve)
 Please state the status of this question:
 1. Incomplete
@@ -30,8 +30,15 @@ If solved, please BRIEFLY explain your strategy.
 
 ############################################################
 
+Please choose only ONE from Quiz02_04 and Quiz02_05.
+If unspecified, I assume by default that Quiz02_04 is
+chosen.
+
+############################################################
+
 Quiz02_04:
-(isRBT and genRedBlackBST)
+30 points plus up to 20 bonus points
+(isAVL and genAVLBST)
 Please state the status of this question:
 1. Incomplete
 2. Solved with testing?
@@ -41,6 +48,8 @@ If solved, please BRIEFLY explain your strategy.
 ############################################################
 
 Quiz02_05:
+30 points plus up to 20 bonus points
+(isRBT and genRedBlackBST)
 Please state the status of this question:
 1. Incomplete
 2. Solved with testing?
@@ -49,7 +58,8 @@ If solved, please BRIEFLY explain your strategy.
 
 ############################################################
 
-Quiz02_06:
+Quiz02_06: 50 points
+(reroot and insert on DBST)
 Please state the status of this question:
 1. Incomplete
 2. Solved with testing?

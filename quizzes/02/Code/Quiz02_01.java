@@ -8,7 +8,7 @@
 // can be represented as a list of integers
 // (representing indices). For instance, given
 // xs = "Hello", (0, 2, 4) refers to the subeqence
-// "Hlo" (since xs[0] = 'H', xs[1] = 'l', and
+// "Hlo" (since xs[0] = 'H', xs[2] = 'l', and
 // xs[4] = 'o'); (0, 3, 4) also refers to "Hlo".
 // The subsequece (0, 2, 4) is to the left of
 // the subsequece (0, 3, 4) as (0, 2, 4) is less
