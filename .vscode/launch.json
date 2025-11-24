@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Quiz02_03",
+            "request": "launch",
+            "mainClass": "Quiz02_03",
+            "projectName": "CS392-2025-Fall-elodiet_24938de3"
+        },
+        {
+            "type": "java",
+            "name": "Quiz02_01",
+            "request": "launch",
+            "mainClass": "Quiz02_01",
+            "projectName": "CS392-2025-Fall-elodiet_24938de3"
+        },
+        {
+            "type": "java",
             "name": "Assign08_01",
             "request": "launch",
             "mainClass": "Assign08_01",

@@ -1,4 +1,4 @@
-package Library.BinSearch;
+package BinSearch;
 
 import java.util.Arrays;
 

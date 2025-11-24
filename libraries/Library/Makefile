@@ -90,8 +90,14 @@ $(ROOT)/Library/FnTuple/*.class \
 >>>>>>> upstream/main
 $(ROOT)/Library/MyRefer/*.class \
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> upstream/main
 $(ROOT)/Library/MyStack/*.class $(ROOT)/Library/MyQueue/*.class \
+=======
+$(ROOT)/Library/MyStack/*.class \
+$(ROOT)/Library/MyQueue/*.class \
+$(ROOT)/Library/FnTree/*.class \
+>>>>>>> upstream/main
 =======
 $(ROOT)/Library/MyStack/*.class \
 $(ROOT)/Library/MyQueue/*.class \

@@ -6,35 +6,20 @@ package Library.LnStrm;
 // typedef LStrm<T> = Supplier<LStcn<T>>
 //
 public class LnStcn<T> {
-    private Node root;
-
-    private class Node {
-	T head;
-	LnStrm<T> tail;
-    }
+    public final T head;
+    public final LnStrm<T> tail;
 
     public LnStcn() {
-	root = null;
-    }
-    public LnStcn(T hd) {
-	root.head = hd;
-	root.tail = new LnStrm<T>();
+	head = null; tail = null;
     }
     public LnStcn
 	(T hd, LnStrm<T> tl) {
-	root.head = hd; root.tail = tl;
-    }
-
-    public T hd() {
-	return root.head;
-    }
-    public LnStrm<T> tl() {
-	return root.tail;
+	this.head = hd; this.tail = tl;
     }
     public boolean nilq() {
-	return (root == null);
+	return (head == null);
     }
     public boolean consq() {
-	return (root != null);
+	return (head != null);
     }
 } // end of [class LnStcn<T>{...}]
