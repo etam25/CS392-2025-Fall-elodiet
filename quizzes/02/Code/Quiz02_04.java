@@ -25,7 +25,7 @@ public class Quiz02_04 {
     public static boolean isAVL (AVLnode avl) {
 	// HX: Please implement a function that
 	// tests whether a given AVLnode is a valid
-	// AVL tree. If it is unclear what a
+	// AVL tree. If it is unclear what an
 	// AVL tree, you can readily find it on-line
 	// Note that you are not asked to check if avl is
 	// a binary search tree in this case.
@@ -41,8 +41,8 @@ public class Quiz02_04 {
     public static boolean genAVLBST() {
 	// Please genenerate a binary search RBT that
 	// contains exactly 1 million keys: 0, 1, 2, ..., 999999
-	// such that the height of this tree is minimal (that is,
-	// as small as possible). What is this height? Please give
+	// such that the height of this tree is maximal (that is,
+	// as large as possible). What is this height? Please give
 	// a brief explanation on your implementation strategy.
     }
     public static void main (String[] args) {
