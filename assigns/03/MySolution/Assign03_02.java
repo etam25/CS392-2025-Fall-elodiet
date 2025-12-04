@@ -1,64 +1,53 @@
-class MyStack {
-    private char[] stack;
-    private int top;
-    private int capacity;
-
-    public MyStack(int size) {
-        capacity = size;
-        stack = new char[capacity];
-        top = -1;
-    }
-
-    public void push(char item) {
-        if (top < capacity - 1) {
-            stack[++top] = item;
-        }
-    }
-
-    public char pop() {
-        if (top >= 0) {
-            return stack[top--];
-        }
-        return '\0'; // Return null character if stack is empty
-    }
-    public boolean isEmpty() {
-        return top == -1;
-    }
-
-    public char peel() {
-        if (top >= 0) {
-            return stack[top];
-        }
-        return '\0';
-    }
-}
+import Library.MyStack.*;
 
 public class Assign03_02 {
+    
     static boolean balancedq(String text) {
-        MyStack stack = new MyStack(text.length());
-
-        for (int i = 0; i < text.length(); i++) {
-            char ch = text.charAt(i);
-
-            if (ch == '(' || ch == '[' || ch == '{') {
-                stack.push(ch);
-            } else if (ch == ')' || ch == ']' || ch == '}') {
-                if (stack.isEmpty()) {
-                    return false;
-                }
-                char top = stack.pop();
-
-                if ((ch == ')' && top != '(') || 
-                    (ch == ']' && top != '[') ||
-                    (ch == '}' && top != '{')) {
+        int capacity = text.length() > 0 ? text.length() : 1;
+        MyStack<Character> stack = new MyStackArray<Character>(capacity);
+        
+        try {
+            for (int i = 0; i < text.length(); i++) {
+                char ch = text.charAt(i);
+                
+                if (ch == '(' || ch == '[' || ch == '{') {
+                    // Use push$exn for proper error handling
+                    stack.push$exn(ch);
+                } else if (ch == ')' || ch == ']' || ch == '}') {
+                    // Check if stack is empty before popping
+                    if (stack.isEmpty()) {
                         return false;
                     }
-            }   
+                    
+                    // Use pop$exn for proper error handling
+                    char top = stack.pop$exn();
+                    
+                    // Check if brackets match
+                    if ((ch == ')' && top != '(') || 
+                        (ch == ']' && top != '[') ||
+                        (ch == '}' && top != '{')) {
+                        return false;
+                    }
+                }
+            }
+            
+            // String is balanced if stack is empty at the end
+            return stack.isEmpty();
+            
+        } catch (MyStackFullExn e) {
+            // This shouldn't happen since we initialize with text.length() capacity
+            System.err.println("Error: Stack overflow - " + e.getMessage());
+            return false;
+        } catch (MyStackEmptyExn e) {
+            // This shouldn't happen due to isEmpty() checks, but handle it anyway
+            System.err.println("Error: Stack underflow - " + e.getMessage());
+            return false;
         }
-        return stack.isEmpty();
     }
+    
     public static void main(String[] argv) {
         System.out.println("Testing balanced parentheses checker:");
+        
         // Test cases that should return true (balanced)
         String[] balancedTests = {
             "()",
@@ -78,17 +67,18 @@ public class Assign03_02 {
             "((())[{}])",
             "" // empty string should be balanced
         };
-
+        
         System.out.println("Balanced test cases (should return true):");
         for (String test : balancedTests) {
             boolean result = balancedq(test);
             System.out.printf("'%s' --> %s %s%n", 
-            test.isEmpty() ? "(empty)" : test,
-            result,
-            result ? "correct" : "error");
+                test.isEmpty() ? "(empty)" : test,
+                result,
+                result ? "✓ correct" : "✗ error");
         }
+        
         System.out.println();
-
+        
         // Test cases that should return false (unbalanced)
         String[] unbalancedTests = {
             "(",
@@ -115,17 +105,17 @@ public class Assign03_02 {
             "{[}]",
             "([)]"
         };
-
-        System.out.println("unbalanced test cases (should return false):");
+        
+        System.out.println("Unbalanced test cases (should return false):");
         for (String test : unbalancedTests) {
             boolean result = balancedq(test);
             System.out.printf("'%s' --> %s %s%n",
-            test,
-            result,
-            !result ? "correct" : "error");
+                test,
+                result,
+                !result ? "✓ correct" : "✗ error");
         }
+        
         System.out.println();
-
         System.out.println("Testing completed!");
         
         // Additional edge case testing

@@ -1,0 +1,56 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "MyQueueListTest",
+            "request": "launch",
+            "mainClass": "MyQueue.MyQueueListTest",
+            "projectName": "MyLibrary_1f6d3b2d"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Mergesort",
+            "request": "launch",
+            "mainClass": "Mergesort.Mergesort",
+            "projectName": "MyLibrary_1f6d3b2d"
+        },
+        {
+            "type": "java",
+            "name": "MyQueue",
+            "request": "launch",
+            "mainClass": "MyQueue.MyQueue",
+            "projectName": "MyLibrary_1f6d3b2d"
+        },
+        {
+            "type": "java",
+            "name": "Quicksort",
+            "request": "launch",
+            "mainClass": "Quicksort.Quicksort",
+            "projectName": "MyLibrary_1f6d3b2d"
+        },
+        {
+            "type": "java",
+            "name": "SelecSort",
+            "request": "launch",
+            "mainClass": "SelecSort.SelecSort",
+            "projectName": "MyLibrary_1f6d3b2d"
+        },
+        {
+            "type": "java",
+            "name": "Test",
+            "request": "launch",
+            "mainClass": "Test",
+            "projectName": "MyLibrary_1f6d3b2d"
+        }
+    ]
+}
