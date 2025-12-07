@@ -1,0 +1,16 @@
+HX-2025:
+
+Some of the Java library
+created for CS392X1, Fall, 2025
+
+FnList: functional lists
+FnArray: functional arrays
+
+FnTuple: functional tuples
+
+FnGtree: Generic functional trees
+
+BinSearch: binary search (static and non-static)
+
+MyStack: list-based and array-based stacks (LIFO)
+MyQueue: list-based and array-based queues (FIFO)
