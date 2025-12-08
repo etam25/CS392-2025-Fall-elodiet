@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "TestPFirstEnumerate",
+            "request": "launch",
+            "mainClass": "TestPFirstEnumerate",
+            "projectName": "CS392-2025-Fall-elodiet_24938de3"
+        },
+        {
+            "type": "java",
             "name": "Assign09_02",
             "request": "launch",
             "mainClass": "Assign09_02",

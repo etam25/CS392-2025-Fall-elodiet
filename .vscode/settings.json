@@ -1,7 +1,8 @@
 {
     "java.project.sourcePaths": [
         "libraries",
-        "assigns/09/MySolution"
+        "assigns/09/MySolution",
+        "assigns/09/Code/FnGtree"
     ],
     "java.project.referencedLibraries": ["lib/Library.jar"],
     "java.debug.settings.onBuildFailureProceed": true
