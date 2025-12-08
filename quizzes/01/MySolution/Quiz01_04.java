@@ -1,45 +1,66 @@
-package MySolution;
 import Library.LnList.*;
 
 public class Quiz01_04 {
     public static <T extends Comparable<T>> LnList<T> InsertSort(LnList<T> xs) {
-        if (xs.nilq1()) {
-            return xs.SU.nil();
+        if (xs.nilq1() || xs.tl1().nilq1()) {
+            return xs;
         }
         
-        LnList<T> sorted = xs.SU.cons(xs.hd1(), xs.SU.nil());
-        LnList<T> remaining = xs.tl1();
+        LnList<T> sorted = LnListSUtil.nil();
+        LnList<T> current = xs;
         
-        while (remaining.consq1()) {
-            T current = remaining.hd1();
-            sorted = insertIntoSorted(sorted, current);
-            remaining = remaining.tl1();
+        while (current.consq1()) {
+            LnList<T> node = current;
+            current = current.tl1();
+            
+            // Insert node into sorted list
+            sorted = insertNode(sorted, node);
         }
         
         return sorted;
     }
     
-    private static <T extends Comparable<T>> LnList<T> insertIntoSorted(LnList<T> sorted, T elem) {
+    private static <T extends Comparable<T>> LnList<T> insertNode(LnList<T> sorted, LnList<T> node) {
+        // Detach the node
+        node.unlink1();
+        
         if (sorted.nilq1()) {
-            return sorted.SU.cons(elem, sorted.SU.nil());
+            return node;
         }
         
-        T head = sorted.hd1();
+        T nodeValue = node.hd1();
         
-        if (elem.compareTo(head) <= 0) {
-            return sorted.SU.cons(elem, sorted);
+        // If node should be first
+        if (nodeValue.compareTo(sorted.hd1()) <= 0) {
+            node.link1(sorted);
+            return node;
         }
         
-        LnList<T> tail = sorted.tl1();
-        LnList<T> newTail = insertIntoSorted(tail, elem);
-        return sorted.SU.cons(head, newTail);
+        // Find insertion point
+        LnList<T> prev = sorted;
+        LnList<T> curr = sorted.tl1();
+        
+        while (curr.consq1()) {
+            if (nodeValue.compareTo(curr.hd1()) <= 0) {
+                break;
+            }
+            prev = curr;
+            curr = curr.tl1();
+        }
+        
+        // Insert node between prev and curr
+        LnList<T> rest = prev.unlink1();
+        prev.link1(node);
+        node.link1(rest);
+        
+        return sorted;
     }
     
     public static void main(String[] args) {
         System.out.println("InsertSort testing\n");
         
         System.out.println("Test 1: Empty list");
-        LnList<Integer> empty = new LnList<Integer>();
+        LnList<Integer> empty = LnListSUtil.nil();
         LnList<Integer> result1 = InsertSort(empty);
         System.out.print("Input:  ");
         empty.System$out$print1();
@@ -48,7 +69,7 @@ public class Quiz01_04 {
         System.out.println("\n");
         
         System.out.println("Test 2: Single element");
-        LnList<Integer> single = new LnList<Integer>(42, new LnList<Integer>());
+        LnList<Integer> single = LnListSUtil.cons(42, LnListSUtil.nil());
         LnList<Integer> result2 = InsertSort(single);
         System.out.print("Input:  ");
         single.System$out$print1();
@@ -57,10 +78,10 @@ public class Quiz01_04 {
         System.out.println("\n");
         
         System.out.println("Test 3: Already sorted");
-        LnList<Integer> sorted = new LnList<Integer>(1, 
-            new LnList<Integer>(2, 
-            new LnList<Integer>(3, 
-            new LnList<Integer>(4, new LnList<Integer>()))));
+        LnList<Integer> sorted = LnListSUtil.cons(1, 
+            LnListSUtil.cons(2, 
+            LnListSUtil.cons(3, 
+            LnListSUtil.cons(4, LnListSUtil.nil()))));
         LnList<Integer> result3 = InsertSort(sorted);
         System.out.print("Input:  ");
         sorted.System$out$print1();
@@ -69,11 +90,11 @@ public class Quiz01_04 {
         System.out.println("\n");
         
         System.out.println("Test 4: Reverse sorted");
-        LnList<Integer> reverse = new LnList<Integer>(5, 
-            new LnList<Integer>(4, 
-            new LnList<Integer>(3, 
-            new LnList<Integer>(2, 
-            new LnList<Integer>(1, new LnList<Integer>())))));
+        LnList<Integer> reverse = LnListSUtil.cons(5, 
+            LnListSUtil.cons(4, 
+            LnListSUtil.cons(3, 
+            LnListSUtil.cons(2, 
+            LnListSUtil.cons(1, LnListSUtil.nil())))));
         LnList<Integer> result4 = InsertSort(reverse);
         System.out.print("Input:  ");
         reverse.System$out$print1();
@@ -82,11 +103,11 @@ public class Quiz01_04 {
         System.out.println("\n");
         
         System.out.println("Test 5: Random order with duplicates");
-        LnList<Integer> random = new LnList<Integer>(3, 
-            new LnList<Integer>(1, 
-            new LnList<Integer>(3, 
-            new LnList<Integer>(1, 
-            new LnList<Integer>(3, new LnList<Integer>())))));
+        LnList<Integer> random = LnListSUtil.cons(3, 
+            LnListSUtil.cons(1, 
+            LnListSUtil.cons(3, 
+            LnListSUtil.cons(1, 
+            LnListSUtil.cons(3, LnListSUtil.nil())))));
         LnList<Integer> result5 = InsertSort(random);
         System.out.print("Input:  ");
         random.System$out$print1();

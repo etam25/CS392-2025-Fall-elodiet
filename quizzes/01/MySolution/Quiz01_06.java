@@ -1,5 +1,3 @@
-package MySolution;
-
 import Library.FnList.*;
 import java.util.function.ToIntBiFunction;
 

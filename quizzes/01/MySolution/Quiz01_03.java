@@ -1,5 +1,3 @@
-package MySolution;
-
 public class Quiz01_03 {
 	private static class Pair<T> {
 		T first;

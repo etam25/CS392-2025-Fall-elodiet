@@ -26,7 +26,7 @@ public class Assign05_01 {
 
     private static final class Split<T> {
         final FnList<T> a, b;
-        Split(FnList<T> a, FnList<T> b) { this.a = a; this.b = b}
+        Split(FnList<T> a, FnList<T> b) { this.a = a; this.b = b; }
     }
 
     private static <T> FnList<T> cons(T x, FnList<T> xs) {

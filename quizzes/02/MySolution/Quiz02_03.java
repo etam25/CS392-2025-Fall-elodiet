@@ -97,6 +97,21 @@ class Sudoku {
 class SudokuNode implements FnGtree<Sudoku> {
     private Sudoku puzzle;
     private FnList<FnGtree<Sudoku>> childrenCache = null;
+
+    @Override
+    public int priority() {
+        // Example priority: count of filled cells (higher is better)
+        int filledCells = 0;
+        int[][] board = puzzle.getBoard();
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (board[i][j] != 0) {
+                    filledCells++;
+                }
+            }
+        }
+        return filledCells;
+    }
     
     public SudokuNode(Sudoku puzzle) {
         this.puzzle = puzzle;

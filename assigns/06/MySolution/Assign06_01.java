@@ -69,21 +69,22 @@ LnStrm<T> mergeLnStrm(LnStrm<LnStrm<T>> fxss, ToIntBiFunction<T,T> cmpr) {
             
             LnStrm<LnStrm<T>> newStreams = new LnStrm<>(
                 () -> {
-                    LnStcn<LnStrm<T>> result = new LnStcn<>();
+                    java.util.concurrent.atomic.AtomicReference<LnStcn<LnStrm<T>>> resultRef = 
+                        new java.util.concurrent.atomic.AtomicReference<>(new LnStcn<>());
                     for (int i = 0; i < nonEmptyStreams.size(); i++) {
                         if (i == finalMinIdx) {
                             // Use tail of min stream
                             LnStcn<T> minCons = nonEmptyStreams.get(i).eval0();
-                            result = new LnStcn<>(minCons.tail, 
-                                new LnStrm<>(() -> result));
+                            resultRef.set(new LnStcn<>(minCons.tail, 
+                                new LnStrm<>(resultRef::get)));
                         } else {
                             // Keep original stream
-                            final LnStcn<LnStrm<T>> finalResult = result;
-                            result = new LnStcn<>(nonEmptyStreams.get(i), 
-                                new LnStrm<>(() -> finalResult));
+                            LnStcn<LnStrm<T>> currentResult = resultRef.get();
+                            resultRef.set(new LnStcn<>(nonEmptyStreams.get(i), 
+                                new LnStrm<>(() -> currentResult)));
                         }
                     }
-                    return result;
+                    return resultRef.get();
                 }
             );
             

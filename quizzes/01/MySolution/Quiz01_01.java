@@ -1,4 +1,3 @@
-package MySolution;
 import Library.FnA1sz.*;
 
 public class Quiz01_01 {
