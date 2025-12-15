@@ -1,6 +1,6 @@
-import Library.FnList.*;
-import Library.LnStrm.*;
-import Library.MyPQueue.*;
+import MyLibrary.FnList.*;
+import MyLibrary.LnStrm.*;
+import MyLibrary.MyPQueue.*;
 import java.util.function.Consumer;
 
 public class FnGtreeSUtil {
