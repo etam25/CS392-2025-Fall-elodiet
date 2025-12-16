@@ -14,7 +14,7 @@ NB: If you need to make changes to your implementation
 of MyDequeList, you must clearly state what changes are
 made in a README file.
 
-## Assignment 7-3 (50 points)
+## Assignment 7-2 (50 points)
 
 A description on Game-of-24 and an accompanying demo can be found by visiting the
 following link:
