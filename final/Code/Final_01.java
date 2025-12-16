@@ -6,8 +6,8 @@
 // (such as blanks, punctuations, etc.) in pg2701.txt.
 */
 
-import Library.FnList.*;
-import Library.LnStrm.*;
+import MyLibrary.FnList.*;
+import MyLibrary.LnStrm.*;
 
 public class Final_01 {
     static LnStrm<FnList<Character>> pg2701_word$strmize() {

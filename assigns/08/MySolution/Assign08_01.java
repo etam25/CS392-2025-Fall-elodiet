@@ -1,8 +1,8 @@
-import Library.FnList.*;
-import Library.LnList.*;
-import Library.FnTuple.*;
-import Library.MyMap00.*;
-import Library.LnStrm.*;
+import MyLibrary.FnList.*;
+import MyLibrary.LnList.*;
+import MyLibrary.FnTuple.*;
+import MyLibrary.MyMap00.*;
+import MyLibrary.LnStrm.*;
 import java.util.function.BiConsumer;
 
 public class Assign08_01<V> implements MyMap00<String, V> {

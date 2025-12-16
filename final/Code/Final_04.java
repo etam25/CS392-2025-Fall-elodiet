@@ -7,8 +7,8 @@
 // with a different approach.
 */
 
-import Library.FnList.*;
-import Library.FnTuple.*;
+import MyLibrary.FnList.*;
+import MyLibrary.FnTuple.*;
 
 public class Final_04 {
     static FnList<FnTupl2<FnList<Character>, Integer>> pg2701_word$count$listize4() {

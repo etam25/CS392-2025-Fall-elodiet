@@ -5,7 +5,7 @@ import MyLibrary.MyRefer.*;
 
 import java.util.function.Consumer;
 
-import Library.MyRefer.MyRefer;
+import MyLibrary.MyRefer.MyRefer;
 
 import java.util.function.BiConsumer;
 

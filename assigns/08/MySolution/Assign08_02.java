@@ -1,24 +1,29 @@
-import Library.FnList.*;
-import Library.LnList.*;
-import Library.FnTuple.*;
-import Library.MyMap00.*;
-import Library.LnStrm.*;
+import MyLibrary.FnList.*;
+import MyLibrary.LnList.*;
+import MyLibrary.FnTuple.*;
+import MyLibrary.MyMap00.*;
+import MyLibrary.LnStrm.*;
 import java.util.function.BiConsumer;
 
 public class Assign08_02<V> implements MyMap00<String, V> {
-    
+    // HX-2025-11-12:
+    // Please give an implementation of hash table
+    // based on open addressing. The probing strategy
+    // chosen for handling collisions is quadratic probing.
     private FnTupl2<String, FnList<V>> table[];
-    private boolean[] deleted;
+    private boolean[] deleted; // Track deleted slots
     private int numKeys;
     private int capacity;
     private static final int DEFAULT_CAPACITY = 16;
     private static final double LOAD_FACTOR_THRESHOLD = 0.7;
     
+    // Constructor with default capacity
     @SuppressWarnings("unchecked")
     public Assign08_02() {
         this(DEFAULT_CAPACITY);
     }
     
+    // Constructor with specified capacity
     @SuppressWarnings("unchecked")
     public Assign08_02(int capacity) {
         this.capacity = capacity;
@@ -27,48 +32,56 @@ public class Assign08_02<V> implements MyMap00<String, V> {
         this.numKeys = 0;
     }
     
+    // Hash function
     private int hash(String key) {
         return Math.abs(key.hashCode()) % capacity;
     }
     
+    // Quadratic probing: h(k, i) = (h(k) + i^2) mod capacity
     private int probe(int hash, int i) {
         return (hash + i * i) % capacity;
     }
     
+    // Find slot for insertion (either empty or matching key)
     private int findSlot(String key) {
         int hash = hash(key);
         
         for (int i = 0; i < capacity; i++) {
             int index = probe(hash, i);
             
+            // Found empty slot (not deleted)
             if (table[index] == null && !deleted[index]) {
                 return index;
             }
             
+            // Found existing key
             if (table[index] != null && table[index].sub0.equals(key)) {
                 return index;
             }
         }
         
-        return -1;
+        return -1; // Table is full
     }
     
+    // Find key in table
     private int findKey(String key) {
         int hash = hash(key);
         
         for (int i = 0; i < capacity; i++) {
             int index = probe(hash, i);
             
+            // Empty slot (not deleted) means key not found
             if (table[index] == null && !deleted[index]) {
                 return -1;
             }
             
+            // Found the key
             if (table[index] != null && table[index].sub0.equals(key)) {
                 return index;
             }
         }
         
-        return -1;
+        return -1; // Key not found
     }
     
     @Override
@@ -90,6 +103,7 @@ public class Assign08_02<V> implements MyMap00<String, V> {
     public LnStrm<FnTupl2<String, FnList<V>>> strmize() {
         FnList<FnTupl2<String, FnList<V>>> result = FnListSUtil.nil();
         
+        // Collect all entries from table
         for (int i = capacity - 1; i >= 0; i--) {
             if (table[i] != null) {
                 result = FnListSUtil.cons(table[i], result);
@@ -146,15 +160,17 @@ public class Assign08_02<V> implements MyMap00<String, V> {
         
         int index = findSlot(key);
         if (index < 0) {
-            return false;
+            return false; // Can't find slot
         }
         
         if (table[index] == null) {
+            // New key
             FnList<V> newVals = FnListSUtil.sing(val);
             table[index] = new FnTupl2<>(key, newVals);
             deleted[index] = false;
             numKeys++;
         } else {
+            // Existing key - prepend value to list
             table[index].sub1 = FnListSUtil.cons(val, table[index].sub1);
         }
         
@@ -184,7 +200,7 @@ public class Assign08_02<V> implements MyMap00<String, V> {
         
         FnList<V> removedVals = table[index].sub1;
         table[index] = null;
-        deleted[index] = true;
+        deleted[index] = true; // Mark as deleted for probing
         numKeys--;
         
         return removedVals;
@@ -197,6 +213,7 @@ public class Assign08_02<V> implements MyMap00<String, V> {
                 String key = table[i].sub0;
                 FnList<V> vals = table[i].sub1;
                 
+                // Process each value for this key
                 FnListSUtil.foritm(vals, val -> {
                     work.accept(key, val);
                 });

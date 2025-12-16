@@ -12,27 +12,41 @@ import java.util.function.ToIntBiFunction;
 public class Assign05_01 {
 
     public static <T extends Comparable<T>> FnList<T> mergeSort(FnList<T> xs) {
-	    return mergeSort(xs, (x1, x2) -> x1.compareTo(x2));
+        return mergeSort(xs, (x1, x2) -> x1.compareTo(x2));
     }
 
     public static<T> FnList<T> mergeSort(FnList<T> xs, ToIntBiFunction<T,T> cmp) {
-	    if (xs == null || xs.nilq() || xs.tl().nilq()) return xs;
+        // Base case: empty or single element
+        if (xs == null || xs.nilq() || xs.tl().nilq()) {
+            return xs;
+        }
 
+        // Split list into two halves
         Split<T> halves = splitAlternate(xs);
+        
+        // Recursively sort both halves
         FnList<T> left = mergeSort(halves.a, cmp);
         FnList<T> right = mergeSort(halves.b, cmp);
+        
+        // Merge the sorted halves
         return merge(left, right, cmp);
     }
 
+    // Helper class to hold two lists
     private static final class Split<T> {
         final FnList<T> a, b;
-        Split(FnList<T> a, FnList<T> b) { this.a = a; this.b = b; }
+        Split(FnList<T> a, FnList<T> b) { 
+            this.a = a; 
+            this.b = b; 
+        }
     }
 
+    // Helper to cons
     private static <T> FnList<T> cons(T x, FnList<T> xs) {
         return new FnList<>(x, xs);
     }
 
+    // Helper to reverse a list
     private static <T> FnList<T> reverse(FnList<T> xs) {
         FnList<T> acc = new FnList<>();
         while (!xs.nilq()) {
@@ -42,25 +56,36 @@ public class Assign05_01 {
         return acc;
     }
 
+    // Split list by alternating elements
     private static <T> Split<T> splitAlternate(FnList<T> xs) {
         FnList<T> aRev = new FnList<>();
         FnList<T> bRev = new FnList<>();
-        boolean toA = true;;
+        boolean toA = true;
+        
         while (!xs.nilq()) {
-            if (toA) aRev = cons(xs.hd(), aRev);
-            else bRev = cons(xs.hd(), bRev);
+            if (toA) {
+                aRev = cons(xs.hd(), aRev);
+            } else {
+                bRev = cons(xs.hd(), bRev);
+            }
             toA = !toA;
             xs = xs.tl();
         }
+        
         return new Split<>(reverse(aRev), reverse(bRev));
     }
 
+    // Merge two sorted lists
     private static <T> FnList<T> merge(FnList<T> xs, FnList<T> ys, ToIntBiFunction<T, T> cmp) { 
         FnList<T> outRev = new FnList<>();
-        FnList<T> a = xs, b = ys;
+        FnList<T> a = xs;
+        FnList<T> b = ys;
 
+        // Merge while both lists have elements
         while (!a.nilq() && !b.nilq()) {
-            T ah = a.hd(), bh = b.hd();
+            T ah = a.hd();
+            T bh = b.hd();
+            
             if (cmp.applyAsInt(ah, bh) <= 0) {
                 outRev = cons(ah, outRev);
                 a = a.tl();
@@ -69,8 +94,17 @@ public class Assign05_01 {
                 b = b.tl();
             }
         }
-        while (!a.nilq()) { outRev = cons(a.hd(), outRev); a = a.tl(); }
-        while (!b.nilq()) { outRev = cons(b.hd(), outRev); b = b.tl(); }
+        
+        // Append remaining elements
+        while (!a.nilq()) { 
+            outRev = cons(a.hd(), outRev); 
+            a = a.tl(); 
+        }
+        while (!b.nilq()) { 
+            outRev = cons(b.hd(), outRev); 
+            b = b.tl(); 
+        }
+        
         return reverse(outRev);
     }
 
@@ -78,6 +112,8 @@ public class Assign05_01 {
         final int N = 1000000;
         Random rng = new Random(42);
         FnList<Integer> xs = new FnList<>();
+        
+        // Generate random list
         for (int i = 0; i < N; i++) { 
             xs = cons(rng.nextInt(), xs);
         }
@@ -85,16 +121,22 @@ public class Assign05_01 {
         long t0 = System.currentTimeMillis();
         FnList<Integer> ys = mergeSort(xs);
         long t1 = System.currentTimeMillis();
+        
         System.out.println("Sorted " + N + " integers in " + (t1 - t0) + " ms");
 
+        // Verify correctness
         boolean ok = true;
         Integer prev = null;
         FnList<Integer> it = ys;
         int shown = 0;
+        
         System.out.print("First 10: ");
         while (!it.nilq()) {
             Integer cur = it.hd();
-            if (prev != null && prev > cur) { ok = false; break;}
+            if (prev != null && prev > cur) { 
+                ok = false; 
+                break;
+            }
             if (shown < 10) {
                 System.out.print(cur + (shown < 9 ? ", " : "\n"));
                 shown++;
@@ -102,8 +144,8 @@ public class Assign05_01 {
             prev = cur;
             it = it.tl();
         }
+        
         System.out.println("Non-decreasing check: " + (ok ? "OK" : "FAILED"));
     }
 
-} // end of [public class Assign05_01{...}]
-
+}

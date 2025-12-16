@@ -39,7 +39,7 @@ public class Final_00 {
 	  }
         );
     }
-    /*
+    /* 
     // HX-2025-12-16: minimal testing
     public static void main(String[] args) {
 	Character ch;

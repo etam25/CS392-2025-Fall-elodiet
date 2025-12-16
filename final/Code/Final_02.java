@@ -11,8 +11,8 @@
 // are considered the same word.
 */
 
-import Library.FnList.*;
-import Library.FnTuple.*;
+import MyLibrary.FnList.*;
+import MyLibrary.FnTuple.*;
 
 public class Final_02 {
     static FnList<FnTupl2<FnList<Character>, Integer>> pg2701_word$count$listize2() {
