@@ -28,6 +28,6 @@ Counting words: version 2.
 
 Counting words: version 3.
 
-## Final_05
+## Final_05 (50 points)
 
 Merging linear lists in n-way and mergesort.
