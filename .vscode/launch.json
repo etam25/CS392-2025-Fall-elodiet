@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Final_04",
+            "request": "launch",
+            "mainClass": "Final_04",
+            "projectName": "CS392-2025-Fall-elodiet_24938de3"
+        },
+        {
+            "type": "java",
+            "name": "Final_05",
+            "request": "launch",
+            "mainClass": "Final_05",
+            "projectName": "CS392-2025-Fall-elodiet_24938de3"
+        },
+        {
+            "type": "java",
+            "name": "Final_03",
+            "request": "launch",
+            "mainClass": "Final_03",
+            "projectName": "CS392-2025-Fall-elodiet_24938de3"
+        },
+        {
+            "type": "java",
             "name": "Final_00",
             "request": "launch",
             "mainClass": "Final_00",

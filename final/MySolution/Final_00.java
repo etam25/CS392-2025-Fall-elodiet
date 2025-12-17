@@ -16,12 +16,13 @@ import java.nio.charset.StandardCharsets;
 public class Final_00 {
     public static
 	LnStrm<Character> pg2701_char$strmize() {
-	Path path = Paths.get("./../Data/pg2701.txt");
+	Path path = Paths.get("./final/Data/pg2701.txt");
 	String content = "";
 	try {
 	    content = Files.readString(path, StandardCharsets.UTF_8);
 	} catch (IOException e) {
 	    // HX: content is left to be empty!
+		e.printStackTrace();
 	}
 	return pg2701$helper_char$strmize(content, content.length(), 0);
     }
