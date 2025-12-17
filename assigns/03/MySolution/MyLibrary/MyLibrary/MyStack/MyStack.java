@@ -9,6 +9,5 @@ interface MyStack<T> {
 
     boolean isFull();
     boolean isEmpty();
-
     T topraw();
 }

@@ -91,7 +91,7 @@ public class Assign07_02 {
         return new LnStrm<>(() -> {
             LnStcn<Term> c1 = s1.eval0();
             if (c1.consq()) {
-                return new LnStcn<T>(c1.head, concat_streams(c1.tail, s2));
+                return new LnStcn<Term>(c1.head, concat_streams(c1.tail, s2));
             } else {
                 return s2.eval0();
             }
@@ -106,7 +106,10 @@ public class Assign07_02 {
         initialTerms.add(new TermInt(n3));
         initialTerms.add(new TermInt(n4));
 
-        return dfs_helper(initialTerms);
+        List<List<Term>> queue = new ArrayList<>();
+        queue.add(initialTerms);
+
+        return bfs_helper(queue);
     }
 
     private LnStrm<Term> dfs_helper(List<Term> terms) {
@@ -153,14 +156,16 @@ public class Assign07_02 {
 
         String op = operations[opIdx];
 
+        // Try t1 op t2
         LnStrm<Term> stream1 = dfs_apply_operation(terms, i, j, t1, t2, op);
         
+        // For non-commutative operations, also try t2 op t1
         LnStrm<Term> stream2 = new LnStrm<>(() -> new LnStcn<>());
         if (op.equals("-") || op.equals("/")) {
-            stream2 = dfs_apply_operation(terms, i, j, t1, t2, op);
+            stream2 = dfs_apply_operation(terms, i, j, t2, t1, op);
         }
 
-        return concat_streams(stream1, concat_streams(stream2, dfs_try_all_operations(terms, i, j, t1, t2, opIdx)));
+        return concat_streams(stream1, concat_streams(stream2, dfs_try_all_operations(terms, i, j, t1, t2, opIdx + 1)));
     }
 
     private LnStrm<Term> dfs_apply_operation(List<Term> terms, int i, int j, Term first, Term second, String op) {
@@ -183,10 +188,7 @@ public class Assign07_02 {
         initialTerms.add(new TermInt(n3));
         initialTerms.add(new TermInt(n4));
 
-        List<List<Term>> queue = new ArrayList<>();
-        queue.add(initialTerms);
-
-        return bfs_helper(queue);
+        return dfs_helper(initialTerms);
     }
 
     private LnStrm<Term> bfs_helper(List<List<Term>> currentLevel) {
@@ -229,7 +231,7 @@ public class Assign07_02 {
                     }
                     if (op.equals("-") || op.equals("/")) {
                         Term newTerm2 = new TermOpr(op, t2, t1);
-                        if (!Double.isNaN(newTerm2.eva()) && !Double.isInfinite(newTerm2.eval())) {
+                        if (!Double.isNaN(newTerm2.eval()) && !Double.isInfinite(newTerm2.eval())) {
                             nextLevel.add(combineTerms(terms, i, j, newTerm2));
                         }
                     }

@@ -1,12 +1,5 @@
 import MyLibrary.FnList.*;
     
-import java.util.Random;
-import java.util.function.Function;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.BiFunction;
-import java.util.function.BiConsumer;
-import java.util.function.BiPredicate;
 import java.util.function.ToIntBiFunction;
 
 public class Assign05_02 {
@@ -16,88 +9,56 @@ public class Assign05_02 {
     }
     
     public static<T> FnList<T> insertSort(FnList<T> xs, ToIntBiFunction<T,T> cmp) {
-        if (xs == null || xs.nilq() || xs.tl().nilq()) {
+        if (xs == null || xs.nilq()) {
             return xs;
         }
         
-        // Start with first element as sorted
+        // Start with first element as sorted, maintain last element for optimization
         FnList<T> sorted = new FnList<>(xs.hd(), new FnList<>());
+        T lastElement = xs.hd();
         FnList<T> cur = xs.tl();
         
         while (cur.consq()) {
-            sorted = insertOptimized(cur.hd(), sorted, cmp);
+            T x = cur.hd();
+            
+            // Fast path for nearly sorted lists: if x >= lastElement, append it
+            // This avoids traversing the list to find insertion point
+            if (cmp.applyAsInt(lastElement, x) <= 0) {
+                sorted = appendFast(sorted, x);
+                lastElement = x;
+            } else {
+                // Need to insert in the middle - do it in one pass
+                InsertResult<T> result = insertWithLast(x, sorted, lastElement, cmp);
+                sorted = result.list;
+                lastElement = result.lastElement;
+            }
             cur = cur.tl();
         }
         
         return sorted;
     }
     
-    // Optimized insert that avoids rebuilding prefix when element goes at the end
-    private static <T> FnList<T> insertOptimized(T x, FnList<T> sorted, ToIntBiFunction<T, T> cmp) {
+    // Helper class to return both the new list and the last element
+    private static final class InsertResult<T> {
+        final FnList<T> list;
+        final T lastElement;
+        InsertResult(FnList<T> list, T lastElement) {
+            this.list = list;
+            this.lastElement = lastElement;
+        }
+    }
+    
+    // Efficient insert that returns the new last element to avoid recomputing it
+    private static <T> InsertResult<T> insertWithLast(T x, FnList<T> sorted, T currentLast, ToIntBiFunction<T, T> cmp) {
         // Check if x should be first
         if (sorted.nilq() || cmp.applyAsInt(x, sorted.hd()) <= 0) {
-            return new FnList<>(x, sorted);
+            return new InsertResult<>(new FnList<>(x, sorted), currentLast);
         }
         
-        // Fast path: check if x goes at the very end (common for nearly sorted lists)
-        FnList<T> last = findLastAndCheck(sorted, x, cmp);
-        if (last != null) {
-            // x goes at the end, just append it
-            return appendAtPosition(sorted, x, last);
-        }
-        
-        // General case: need to insert in the middle
-        return insertInMiddle(x, sorted, cmp);
-    }
-    
-    // Check if element should go at the end, return last node if so, null otherwise
-    private static <T> FnList<T> findLastAndCheck(FnList<T> list, T x, ToIntBiFunction<T, T> cmp) {
-        FnList<T> cur = list;
-        FnList<T> prev = null;
-        
-        while (cur.consq()) {
-            if (cmp.applyAsInt(x, cur.hd()) <= 0) {
-                // x should not go at the end
-                return null;
-            }
-            prev = cur;
-            cur = cur.tl();
-        }
-        
-        // x should go at the end
-        return prev;
-    }
-    
-    // Append x after the given position by reconstructing only the necessary part
-    private static <T> FnList<T> appendAtPosition(FnList<T> list, T x, FnList<T> position) {
-        // Build path from start to position, then add x
-        FnList<T> reversed = new FnList<>();
-        FnList<T> cur = list;
-        
-        while (cur != position) {
-            reversed = new FnList<>(cur.hd(), reversed);
-            cur = cur.tl();
-        }
-        
-        // Add position node and x
-        FnList<T> result = new FnList<>(x, new FnList<>());
-        result = new FnList<>(position.hd(), result);
-        
-        // Reconstruct in correct order
-        while (reversed.consq()) {
-            result = new FnList<>(reversed.hd(), result);
-            reversed = reversed.tl();
-        }
-        
-        return result;
-    }
-    
-    // Insert in the middle using the standard approach
-    private static <T> FnList<T> insertInMiddle(T x, FnList<T> sorted, ToIntBiFunction<T, T> cmp) {
+        // Build prefix in reverse as we find insertion point
         FnList<T> prefix = new FnList<>();
         FnList<T> cur = sorted;
         
-        // Find insertion point
         while (cur.consq() && cmp.applyAsInt(cur.hd(), x) <= 0) {
             prefix = new FnList<>(cur.hd(), prefix);
             cur = cur.tl();
@@ -110,6 +71,29 @@ public class Assign05_02 {
             prefix = prefix.tl();
         }
         
+        // Since x < currentLast (we checked before calling this), x cannot be the new last.
+        // The last element remains currentLast.
+        return new InsertResult<>(result, currentLast);
+    }
+    
+    // Fast append when we know element goes at the end
+    // Rebuilds list once without checking insertion point
+    private static <T> FnList<T> appendFast(FnList<T> list, T x) {
+        // Rebuild list with x appended
+        FnList<T> reversed = new FnList<>();
+        FnList<T> cur = list;
+        while (cur.consq()) {
+            reversed = new FnList<>(cur.hd(), reversed);
+            cur = cur.tl();
+        }
+        // Add x at the end
+        reversed = new FnList<>(x, reversed);
+        // Reverse back
+        FnList<T> result = new FnList<>();
+        while (reversed.consq()) {
+            result = new FnList<>(reversed.hd(), result);
+            reversed = reversed.tl();
+        }
         return result;
     }
     
