@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/APIserver.iml" filepath="$PROJECT_DIR$/APIserver.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/elodieServer.iml" filepath="$PROJECT_DIR$/elodieServer.iml" />
+>>>>>>> c6568ca (changes)
     </modules>
   </component>
 </project>
