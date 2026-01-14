@@ -1,4 +1,4 @@
-package MyLibrary.MyLibrary.MyDeque;
+package MyLibrary.MyDeque;
 
 import MyLibrary.FnList.*;
 import MyLibrary.MyRefer.*;
@@ -7,7 +7,7 @@ import java.util.function.Consumer;
 import java.util.function.BiConsumer;
 
 public abstract class MyDequeBase<T> implements MyDeque<T> {
-    public boolean isEmpt() {
+    public boolean isEmpty() {
         return (size() <= 0);
     }
 
