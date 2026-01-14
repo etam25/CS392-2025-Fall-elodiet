@@ -1,5 +1,5 @@
 import java.util.Arrays;
-
+@Test
 public class Assign02_03 {
     public static boolean solve_3sum(Integer[] A) {
         if (A.length < 3) {
