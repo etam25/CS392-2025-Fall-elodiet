@@ -13,9 +13,9 @@ public class Final_05 {
 	// HX: Given an array of (linear) lists (LnList), each of which is
 	// ordered according to cmp, please implement a function to merge them
 	// into one ordered (linear) list. Please note that you cannot create
-	// new list nodes; you can only use exist nodes to form the returned
+	// new list nodes; you can only use existing nodes to form the returned
 	// linear list. You are asked to use MyPQueueArray.java implemented in
-	// Assigment#9 for finding the minimum of a collection of arguments.
+	// Assigment#9 for finding the minimum of a collection of nodes.
     }
 
     public static<T>
